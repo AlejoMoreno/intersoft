@@ -3,12 +3,21 @@
 <head>
 	<title>Intersoft</title>
 	<link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+    <html lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
 <body>
 	<center style="padding-top:15%;">
 	<img style="width: 500px;" src="pages/images/logo.png">
 	<h1 style="font-family: 'Amatic SC', cursive;margin-top:-20px;font-size:50px;">Intersoft</h1>
 	</center>
+
+    <center><div id="cargando" style="position: absolute;width: 100%;height: 100%;background: black;top: 0px;left: 0px;opacity: 0.8;display: none;"><img src="pages/images/cargando.gif" style="margin-top: 20%;"></div></center>
 </body>
 </html>
 
@@ -16,8 +25,8 @@
 	setTimeout ("Redirect('login.php')", 5000);
 
 	function Redirect(url) {
-	   setTimeout ("document.write('texto'); ", 2000);
-       window.location="pages/"+url;
+        $('#cargando').show();
+        window.location="pages/"+url;
     }
 </script>
 
