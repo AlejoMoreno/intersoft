@@ -10,11 +10,19 @@ echo $visual->html_login();
 
 ?>
 
+
+<script type="text/javascript">
+    function Redirect(url) {
+        $('#cargando').show();
+        window.location=url;
+    }
+</script>
+
 <style type="text/css">
 body{
-	-webkit-animation: myfirst 10s infinite; /* Safari 4.0 - 8.0 */
+	-webkit-animation: myfirst 20s infinite; /* Safari 4.0 - 8.0 */
     -webkit-animation-direction: alternate; /* Safari 4.0 - 8.0 */
-    animation: myfirst 10s infinite;
+    animation: myfirst 20s infinite;
     animation-direction: alternate;
 }
 /* Safari 4.0 - 8.0 */

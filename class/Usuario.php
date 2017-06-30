@@ -43,7 +43,7 @@ class Usuario{
 
 	public function construct($Id_usuario,$ncedula,$Nombre,$Apellido,$Cargo,$Telefono,$Password,$Correo,$Estado){
 		//constructor 
-		$this->Id_usuario 	= $Id_usuario
+		$this->Id_usuario 	= $Id_usuario;
 		$this->ncedula 		= $ncedula;
 		$this->Nombre 		= $Nombre;
 		$this->Apellido 	= $Apellido;
@@ -120,6 +120,15 @@ class Usuario{
 	function SetPassword($Password){$this->Password = md5($Password);}
 	function SetCorreo($Correo){$this->Correo = $Correo;}
 	function SetEstado($Estado){$this->Estado = $Estado;}
+
+	public function ApiOlvidoPassword($search){
+		$olvido = Usuario::GetParticular(" WHERE `ncedula` LIKE '".$search."' OR `Correo` LIKE '".$search."'  ;");
+		//hacer el envio a correo de la clave
+		if(sizeof($olvido)!=0 )
+			return 'Hemos enviado tu clave a '.$olvido[0]['Correo'];
+		else
+			return 'No encontramos coincidencias ';
+	}
 
 
 }

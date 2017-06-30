@@ -5,6 +5,8 @@
 * autor Alejandro Moreno
 */
 
+include_once('Departamento.php');
+
 /*
 	PARAMETROS PARA LAS CIUDADES
 -----------------------------------
@@ -14,7 +16,7 @@ Nombre
 Id_departamento
 */
 
-class CIUDAD{
+class CIUDAD extends Departamento{
 	var $Id_ciudad;
 	var $Codigo_ciudad;
 	var $Nombre;
@@ -71,7 +73,19 @@ class CIUDAD{
 		return $array;
 	}
 
+	/*		CONTRUCCION DE FUNCIONES varias			*/
+
+	function GetId_ciudad(){return $this->Id_ciudad;}
+	function GetCodigo_ciudad(){return $this->Codigo_ciudad;}
+	function GetNombre(){return $this->Nombre;}
+	function GetId_departamento(){return $this->Id_departamento;}
+	function SetId_ciudad($Id_ciudad){$this->Id_ciudad = $Id_ciudad;}
+	function SetCodigo_ciudad($Codigo_ciudad){$this->Codigo_ciudad = $Codigo_ciudad;}
+	function SetNombre($Nombre){$this->Nombre = $Nombre;}
+	function SetId_departamento($Id_departamento){$this->Id_departamento = $Id_departamento;}
+
 }
+
 
 /*$Ciudades = new CIUDAD();
 print_r($Ciudades->GetAll());*/
