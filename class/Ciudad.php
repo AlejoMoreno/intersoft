@@ -1,5 +1,10 @@
 <?php 
 
+/**
+* copyrigth famc@2017
+* autor Alejandro Moreno
+*/
+
 /*
 	PARAMETROS PARA LAS CIUDADES
 -----------------------------------
@@ -21,7 +26,7 @@ class CIUDAD{
 		include_once('conexion.php');
 		$this->conexion= conexion();
 	}
-
+	/*		CONTRUCCION DE FUNCIONES BASE DE DATOS			*/
 	public function construct($Id_ciudad,$Codigo_ciudad,$Nombre,$Id_departamento){
 		//constructor 
 		$this->Id_ciudad = $Id_ciudad;
@@ -39,12 +44,12 @@ class CIUDAD{
 			mysqli_query($this->conexion, $sql) or die(mysqli_error($this->conexion));
 	}
 
-	public function Update($id){
+	public function Update(){
 		$sql = "UPDATE `CIUDAD` SET 
-			`Codigo_ciudad` = '$this->Codigo_ciudad',
-			`Nombre` = '$this->Nombre',
-			`Id_departamento` = '$this->Id_departamento'
-			WHERE `CIUDAD`.`Id_ciudad` = $id;";
+			`Codigo_ciudad` 	= '$this->Codigo_ciudad',
+			`Nombre` 			= '$this->Nombre',
+			`Id_departamento` 	= '$this->Id_departamento'
+			WHERE `CIUDAD`.`Id_ciudad` = $this->Id_ciudad;";
 			mysqli_query($this->conexion, $sql) or die(mysqli_error($this->conexion));
 	}
 
