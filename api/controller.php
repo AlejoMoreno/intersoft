@@ -20,7 +20,12 @@ function ejecutar($function){
 
 	    case "ApiOlvidoPassword":
 	    	$Usuario = new Usuario();
-			print_r($Usuario->ApiOlvidoPassword($_POST['search']));
+			echo json_encode($Usuario->ApiOlvidoPassword($_POST['search']));
+	    break;
+
+	    case "ApiLogin":
+	    	$Usuario = new Usuario();
+			echo json_encode($Usuario->ApiLogin($_POST['cedula'],$_POST['password']));
 	    break;
 
 	    default:

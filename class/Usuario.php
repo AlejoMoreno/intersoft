@@ -124,10 +124,27 @@ class Usuario{
 	public function ApiOlvidoPassword($search){
 		$olvido = Usuario::GetParticular(" WHERE `ncedula` LIKE '".$search."' OR `Correo` LIKE '".$search."'  ;");
 		//hacer el envio a correo de la clave
-		if(sizeof($olvido)!=0 )
-			return 'Hemos enviado tu clave a '.$olvido[0]['Correo'];
-		else
-			return 'No encontramos coincidencias ';
+		if(sizeof($olvido)!=0 ){
+			$array = array("result"=>"true","message"=>$olvido[0]);
+			return $array;
+		}
+		else{
+			$array = array("result"=>"false","message"=>"No se encontraron coincidencias");
+			return $array;
+		}
+	}
+
+	public function ApiLogin($user,$password){
+		//$password = md5($password);
+		$login = Usuario::GetParticular(" WHERE `ncedula` LIKE '$user' AND `Password` LIKE '$password' ");
+		if(sizeof($login)!=0){
+			$array = array("result"=>"true","message"=>$login[0]);
+			return $array;
+		}
+		else{
+			$array = array("result"=>"false","message"=>"No se encontro ningun registro");
+			return $array;
+		}
 	}
 
 

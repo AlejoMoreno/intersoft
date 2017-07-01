@@ -24,7 +24,7 @@ echo $visual->html_Olvido();
     });
 	function validar(id,texto){
 		if(texto=='' || texto==' '){$('#resultado').html('<p style="color:red">Los campos no pueden estar vacios</p>');}
-		else{$('#resultado').html('<p style="color:green">'+id+' ok</p>');}
+		else{$('#'+id).css('border','1px solid green');}
 	}
 	function html_olvido(){
 		var parametros = {

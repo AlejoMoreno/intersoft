@@ -39,16 +39,17 @@ class Visual{
 			<p style="font-family: 'Amatic SC', cursive;font-size: 30px;">Bienvenido a Intersoft</p>
 			<div class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-				<input id="cedula" type="text" class="form-control has-success" name="cedula" placeholder="Cédula">
+				<input id="cedula" type="text" class="form-control has-success" name="cedula" placeholder="Cédula" onkeyup="validar('cedula',this)">
 			</div>
 			<div class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-				<input id="password" type="password" class="form-control" name="password" placeholder="Password">
+				<input id="password" type="password" class="form-control" name="password" placeholder="Password" onkeyup="validar('password',this)">
 			</div>
 			<div class="input-group"><br>
-				<button type="button" onclick="html_login();" class="btn btn-success" style="width: 200px;animation: myfirst 20s infinite;">Entrar</button>
+				<button type="button" id="boton" onclick="html_login();" class="btn btn-success" style="width: 200px;animation: myfirst 20s infinite;">Entrar</button>
 			</div>
 			<div style="padding-top: 25px;" onclick="setTimeout (`Redirect('olvidoPassword.php')`, 1000);"><a href="#"> Olvido de Contraseña</a></div>
+			<div id="resultado" style="padding: 10px;color:red;">...</div>
 		</form>
 		</center>
 		<center><div id="cargando" style="position: absolute;width: 100%;height: 100%;background: black;top: 0px;left: 0px;opacity: 0.8;display: none;z-index: 100"></div></center>
@@ -79,6 +80,19 @@ class Visual{
 
 
 	<?php
+	}
+
+	function html_error(){
+	?>
+		<body>
+			<a href="login.php"><img style="width: 150px;position: absolute;" src="images/logo.png"></a>
+			<div class="jumbotron text-center" style="background: #207ce5;color: white;">
+				<h1 style="font-family: 'Amatic SC', cursive;"><?php echo 'Error (vuelve a loguearte)';?></h1>
+				<script type="text/javascript">alert('Se cerro sesion');</script>
+			</div>
+		</body>
+
+	<?php 
 	}
 
 }

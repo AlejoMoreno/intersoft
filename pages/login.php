@@ -11,6 +11,57 @@ echo $visual->html_login();
 ?>
 
 
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#cedula').focus();
+    });
+    $("#cedula").keypress(function(e) {
+       if(e.which == 13) {
+          // Acciones a realizar, por ej: enviar formulario.
+          $('#password').focus();
+       }
+    });
+    $("#password").keypress(function(e) {
+       if(e.which == 13) {
+          // Acciones a realizar, por ej: enviar formulario.
+          $('#boton').focus();
+       }
+    });
+    /*function validar(id,texto){
+        if(texto=='' || texto==' '){$('#resultado').html('<p style="color:red">Los campos no pueden estar vacios</p>');}
+        else{$('#'+id).css('border','1px solid green');}
+    }*/
+    function html_login(){
+        var parametros = {
+        "Autorization" : "92383af3b97f5e992ab9050693941816",
+        "function" : "ApiLogin",
+        "cedula" : $('#cedula').val(),
+        "password" : $('#password').val()
+        };
+        $.ajax({
+                data:  parametros,
+                url:   '../api/controller.php',
+                type:  'post',
+                beforeSend: function () {
+                    $('#resultado').html('<center><div id="cargando" style="position: absolute;width: 100%;height: 100%;background: black;top: 0px;left: 0px;opacity: 0.8;z-index:100"><img src="images/cargando.gif" style="margin-top: 20%;"></div></center>');
+                },
+                success:  function (response) {
+                   var usuario = JSON.parse(response);
+                   if(usuario.result=='true'){                    
+                    Redirect('profile.php?json='+response);
+                   }
+                   else{
+                    $('#resultado').html('No se encontraron Coincidencias');
+                   }
+                }
+        });
+    }
+
+</script>
+
+
+
 <script type="text/javascript">
     function Redirect(url) {
         $('#cargando').show();
