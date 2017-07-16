@@ -73,6 +73,15 @@ class CIUDAD extends Departamento{
 		return $array;
 	}
 
+	public function sql($sql){
+		$array = array();
+		$bill = mysqli_query($this->conexion, $sql) or die(mysqli_error($this->conexion));
+		while($row = $bill->fetch_assoc()){
+			array_push($array, $row);
+		}
+		return $array;
+	}
+
 	/*		CONTRUCCION DE FUNCIONES varias			*/
 
 	function GetId_ciudad(){return $this->Id_ciudad;}
@@ -83,6 +92,48 @@ class CIUDAD extends Departamento{
 	function SetCodigo_ciudad($Codigo_ciudad){$this->Codigo_ciudad = $Codigo_ciudad;}
 	function SetNombre($Nombre){$this->Nombre = $Nombre;}
 	function SetId_departamento($Id_departamento){$this->Id_departamento = $Id_departamento;}
+
+	public function TableCiudades(){
+		$data = Ciudad::sql(" SELECT CIUDAD.Codigo_ciudad, DEPARTAMENTO.Nombre as departamento, CIUDAD.Nombre as ciudad, CIUDAD.Id_ciudad FROM CIUDAD, DEPARTAMENTO WHERE CIUDAD.Id_departamento = DEPARTAMENTO.Id_departamento; ");
+
+	?>
+		<div class="container">         
+		  <table class="table table-hover" id="datos">
+		    <thead>
+		      <tr>
+		      	<th>#</th>
+				<th>Código Ciudad</th>
+				<th>Nombre Departamento</th>
+				<th>Nombre Ciudad</th>
+				<th>Botón Eliminar</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		    <?php 
+		    $count = 0;
+		    foreach ($data as $value) {
+		    	echo "	<tr class='".$count."'>	    	
+		        <div class='tabusuarios'>
+		        <td class='TId_usuario".$count."'>".$count."</td>
+		        <td class='Tncedula".$count."'>".$value['Codigo_ciudad']."</td>
+		        <td class='TNombre".$count."'>".$value['departamento']."</td>
+		        <td class='TApellido".$count."'>".$value['ciudad']."</td>
+		        </div>
+		        <td><button onclick='eliminarCiudad(".$value['Id_ciudad'].");' name='eliminarCiudad' class='btn btn-default'>Eliminar</button></td>
+		    </tr>";
+		    $count++;
+		    }
+		    ?>
+		      
+		    </tbody>
+		  </table>
+		</div>
+	<?php
+	}
+
+	public function FormUser(){
+		echo 'hol';
+	}
 
 }
 

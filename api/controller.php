@@ -2,6 +2,7 @@
 
 /*Innclusion de librerias*/
 include_once('../class/Usuario.php');
+include_once('../class/Mail.php');
 
 if(isset($_POST['Autorization'])){
 	if($_POST['Autorization']=='92383af3b97f5e992ab9050693941816'){
@@ -20,7 +21,17 @@ function ejecutar($function){
 
 	    case "ApiOlvidoPassword":
 	    	$Usuario = new Usuario();
-			echo json_encode($Usuario->ApiOlvidoPassword($_POST['search']));
+			$mail = new Mail();
+			$data = $Usuario->ApiOlvidoPassword($_POST['search']);
+			if($data['status']=='true'){
+				$mail->setData($data);
+				$mail->sendMail('fredymoreno@uan.edu.co');
+				echo '{"status":"true", "message":"Se envio correo, olvido contraseña"}';
+			}
+			else{
+				echo '{"status":"false", "message":"No se encontro coincidencias"}';
+			}
+			
 	    break;
 
 	    case "ApiLogin":

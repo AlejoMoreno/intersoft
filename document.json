@@ -1,0 +1,18 @@
+{
+	"status": true,
+	"head": {
+		...
+	},
+	"productos": {
+		...
+	},
+	"totales":{
+		...
+	},
+	"cartera": {
+		...
+	},
+	"contabilidad": {
+
+	}
+}

@@ -24,10 +24,11 @@ class Visual{
 			<meta charset="utf-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+			<link rel="stylesheet" href="css/intersoft.css">
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 			<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-			<script src="js/index.js"></script>
+			<script  type="text/javascript" src="http://localhost:8080/intersoft/pages/js/index.js"></script>
 		</head>';
 	}
 	function html_login(){
@@ -80,6 +81,42 @@ class Visual{
 
 
 	<?php
+	}
+
+	function html_menu($active){
+	?>
+		<a href="login.php"><img style="width: 150px;position: absolute;" src="images/logo.png"></a>
+		<div class="jumbotron text-center" style="background: #207ce5;color: white;height:150px;">
+			<h1 style="font-family: 'Amatic SC', cursive;"><?php echo $this->titulo;?></h1>
+		</div>
+		<nav class="navbar navbar-default" style="margin-top:-50px;">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">Intersoft</a>
+		    </div>
+		    <ul class="nav navbar-nav">
+		      <li><a href="#">Inicio</a></li>
+		      <li><a href="#">Inventario</a></li>
+		      <li><a href="../pages/administrador.php">Administración</a></li>
+		      <li><a href="#">Cerrar Sesión</a></li>
+		    </ul>
+		  </div>
+		</nav>
+	<?php
+	}
+
+	function html_administrador(){
+	?>
+		  <ul class="nav nav-tabs">
+		    <li><a href="usuarios.php"><img src="https://image.flaticon.com/icons/svg/186/186333.svg" width="60px;"><br>Usuarios</a></li>
+		    <li><a href="ciudades.php"><img src="https://image.flaticon.com/icons/svg/197/197575.svg" width="60px;"><br>Ciudades</a></li>
+		    <li><a href="#Directorio"><img src="https://image.flaticon.com/icons/png/512/431/431280.png" width="60px;"><br>Directorio</a></li>
+		    <li><a href="#Empresa"><img src="https://image.flaticon.com/icons/png/512/265/265754.png" width="60px;"><br>Empresa</a></li>
+		    <li><a href="#Resolución"><img src="https://image.flaticon.com/icons/svg/377/377062.svg" width="60px;"><br>Resolución</a></li>
+		    <li><a href="#Sucursal"><img src="http://www.flaticon.com/premium-icon/icons/png/512/284/284861.png" width="60px;"><br>Sucursal</a></li>
+		    <li><a href="#Tipo_Documento"><img src="https://image.flaticon.com/icons/svg/377/377111.svg" width="60px;"><br>Tipo Documento</a></li>
+		  </ul>
+	<?php 
 	}
 
 	function html_error(){
