@@ -33,7 +33,6 @@ class Usuario{
 	var $Correo;
 	var $Estado;
 	var $conexion;
-	var $server = 'C:/xampp/htdocs/intersoft';
 
 	public function __construct()	{
 		include_once('conexion.php');
@@ -152,14 +151,14 @@ class Usuario{
 	?>
 		<div class="container">
 		  <div class="container">         
-		  <table class="table table-hover">
+		  <table class="table table-hover" style="width: 95%;">
 		    <thead>
 		      <tr><form action="" method="POST">
 		      	<input type='hidden' id='Autorization' value='92383af3b97f5e992ab9050693941816' name='Autorization'>
 		      	<th><div class="form-group">
 		      	<label for="Id_usuario">Id_usuario:</label>
 		      	<input type="number" value="" class="form-control" id="Id_usuario" placeholder="ej.(1)" name="Id_usuario" disabled="">
-		      	</div></th>
+		      </tr><tr></div></th>
 				<th><div class="form-group">
 				<label for="ncedula">ncedula:</label>
 				<input type="text" class="form-control" id="ncedula" placeholder="ej.(1030570356)" name="ncedula">
@@ -172,7 +171,19 @@ class Usuario{
 				<label for="Apellido">Apellido:</label>
 				<input type="text" class="form-control" id="Apellido" placeholder="ej.(Moreno)" name="Apellido">
 				</div></th>
+			  </tr><tr><th><div class="form-group">
+				<label for="Telefono">Telefono:</label>
+				<input type="text" class="form-control" id="Telefono" placeholder="Ingresa el Télefono" name="Telefono">
+				</div></th>
 				<th><div class="form-group">
+				<label for="Password">Password:</label>
+				<input type="password" class="form-control" id="Password" placeholder="Ingresa el Password" name="Password">
+				</div></th>
+				<th><div class="form-group">
+				<label for="Correo">Correo:</label>
+				<input type="text" class="form-control" id="Correo" placeholder="Ingresa el Correo" name="Correo">
+				</div></th>
+			   </tr><tr><th><div class="form-group">
 				<label for="Cargo">Cargo:</label>
 				<select class="form-control" id="Cargo" placeholder="ej.()" name="Cargo">
 			      	<option value="">SELECCIONE CARGO</option>
@@ -186,18 +197,6 @@ class Usuario{
 			    </select>
 			    </div></th>
 				<th><div class="form-group">
-				<label for="Telefono">Telefono:</label>
-				<input type="text" class="form-control" id="Telefono" placeholder="Ingresa el Télefono" name="Telefono">
-				</div></th>
-				<th><div class="form-group">
-				<label for="Password">Password:</label>
-				<input type="password" class="form-control" id="Password" placeholder="Ingresa el Password" name="Password">
-				</div></th>
-				<th><div class="form-group">
-				<label for="Correo">Correo:</label>
-				<input type="text" class="form-control" id="Correo" placeholder="Ingresa el Correo" name="Correo">
-				</div></th>
-				<th><div class="form-group">
 				<label for="Estado">Estado:</label>
 				<select class="form-control" id="Estado" placeholder="ej.(ACTIVO,DESAC)" name="Estado">
 			      	<option value="">SELECCIONE ESTADO</option>
@@ -206,8 +205,7 @@ class Usuario{
 			      	<option value="PENDIENTE">PENDIENTE</option>
 			    </select>
 			    </div></th>
-				<th><div class="form-group">
-				<label for="Correo">Botón:</label>
+				</tr><tr><th><div class="form-group">
 				<button type="submit" name="guardarusuarios" id="guardarusuarios" class="btn btn-default">Agregar</button></form>
 		      	</div></th>
 		    </thead>

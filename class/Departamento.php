@@ -13,7 +13,7 @@ Codigo_departamento
 Nombre
 */
 
-class DEPARTAMENTO {
+class Departamento {
 	var $Id_departamento;
 	var $Codigo_departamento;
 	var $Nombre;
@@ -74,6 +74,16 @@ class DEPARTAMENTO {
 	function SetId_departamento($Id_departamento){$this->Id_departamento = $Id_departamento;}
 	function SetCodigo_departamento($Codigo_departamento){$this->Codigo_departamento = $Codigo_departamento;}
 	function SetNombre($Nombre){$this->Nombre = $Nombre;}
+
+	function selectDepartamentos(){
+		$array = Departamento::GetAll();
+		$result = '<select  class="form-control" id="Id_departamento" placeholder="Id_departamento" name="Id_departamento"><option value="">SELECCIONA UN DEPARTAMENTO</option>';
+		foreach ($array as $value) {
+			$result .= '<option value="'.$value['Id_departamento'].'">'.$value['Nombre'].'</option>';
+		}
+		$result .= '</select>';
+		return $result;
+	}
 
 }
 

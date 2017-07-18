@@ -5,10 +5,12 @@ session_start();
 $server = 'C:/xampp/htdocs/intersoft';
 include_once($server.'/class/Visual.php');
 include_once($server.'/class/Ciudad.php');
+include_once($server.'/class/Departamento.php');
 
 //creacion de objetos
 $visual = new Visual();
 $ciudades = new Ciudad();
+$departamento = new Departamento();
 echo $visual->encabezado('Administrador');
 
 
@@ -33,15 +35,17 @@ else{//mandar a error login
     <center><h3><img src="https://image.flaticon.com/icons/svg/197/197575.svg" width="60px;"></h3></center>
     <?php //POST function
     if(isset($_POST['Autorization'])){
-      if(isset($_POST['guardarCiudades'])){
+      if(isset($_POST['guardarCiudad'])){
         //crear objeto ciudades
-        
+        $ciudades->construct('',$_POST['Codigo_ciudad'],$_POST['Nombre'],$_POST['Id_departamento']);
+        //guardar en la base de datos
+        $ciudades->Insert();
       }
-      elseif(isset($_POST['actualizarCiudades'])){
-       
-      }
-      elseif(isset($_POST['eliminarUsuarios'])){
-        
+      elseif(isset($_POST['guardarDepartamento'])){
+        //crear departamento
+        $departamento->construct('',$_POST['Codigo_departamento'],$_POST['Nombredep']);
+        //guardar en la base de datos
+        $departamento->Insert();
       }
       else{
         echo '<script>alert("No tienes Autorización para efectuar el cambio");</script>';

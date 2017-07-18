@@ -132,6 +132,10 @@ class Visual{
 	<?php 
 	}
 
+	function html_profile(){
+		
+	}
+
 }
 
 ?>

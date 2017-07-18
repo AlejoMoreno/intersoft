@@ -39,10 +39,8 @@ class CIUDAD extends Departamento{
 
 	public function Insert(){
 		$sql = "INSERT INTO `CIUDAD` (`Id_ciudad`, `Codigo_ciudad`, `Nombre`, `Id_departamento`) VALUES (
-			NULL, 
-			'$this->Codigo_ciudad', 
-			'$this->Nombre, 
-			'$this->Id_departamento');";
+		NULL, 
+		'$this->Codigo_ciudad', '$this->Nombre', '$this->Id_departamento');";
 			mysqli_query($this->conexion, $sql) or die(mysqli_error($this->conexion));
 	}
 
@@ -105,7 +103,7 @@ class CIUDAD extends Departamento{
 				<th>Código Ciudad</th>
 				<th>Nombre Departamento</th>
 				<th>Nombre Ciudad</th>
-				<th>Botón Eliminar</th>
+				<th></th>
 		      </tr>
 		    </thead>
 		    <tbody>
@@ -132,7 +130,45 @@ class CIUDAD extends Departamento{
 	}
 
 	public function FormUser(){
-		echo 'hol';
+	?>
+
+		<div class="tab-content" style="width: 40%;float: left;padding:10px;margin: 10px;">
+			<h2>Departamentos:</h2>
+			<form action="" method="POST">
+			<input type='hidden' id='Autorization' value='92383af3b97f5e992ab9050693941816' name='Autorization'>
+			<div class="form-group">
+			  <label for="Codigo_departamento">Codigo_departamento:</label>
+			  <input type="text" class="form-control" id="Codigo_departamento" placeholder="Codigo departamento" name="Codigo_departamento">
+			</div>
+			<div class="form-group">
+			  <label for="Nombre">Nombre:</label>
+			  <input type="text" class="form-control" id="Nombredep" placeholder="Nombre" name="Nombredep">
+			</div>
+			<button type="submit" name="guardarDepartamento" class="btn btn-default">Guardar</button>
+			</form>			
+		</div>
+
+
+		<div class="tab-content" style="width: 40%;float: left;padding:10px;margin: 10px;">
+			<h2>Ciudades:</h2>
+			<form action="" method="POST">
+			<input type='hidden' id='Autorization' value='92383af3b97f5e992ab9050693941816' name='Autorization'>
+			<div class="form-group">
+			  <label for="Codigo_ciudad">Codigo_ciudad:</label>
+			  <input type="text" class="form-control" id="Codigo_ciudad" placeholder="Codigo ciudad" name="Codigo_ciudad">
+			</div>
+			<div class="form-group">
+			  <label for="Nombre">Nombre:</label>
+			  <input type="text" class="form-control" id="Nombre" placeholder="Nombre" name="Nombre">
+			</div>
+			<div class="form-group">
+			  <label for="Id_departamento">Id_departamento:</label>
+			  <?php echo Departamento::selectDepartamentos(); ?>
+			</div>
+			<button type="submit" name="guardarCiudad" class="btn btn-default">Guardar</button>
+			</form>			
+		</div>
+	<?php 
 	}
 
 }
