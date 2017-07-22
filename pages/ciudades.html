@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>usuarios</title>
+	<link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+	<html lang="en">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/intersoft.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script  type="text/javascript" src="http://localhost:8080/intersoft/pages/js/index.js"></script>
+</head>
+<body>
+	<a href="login.php"><img style="width: 150px;position: absolute;" src="images/logo.png"></a>
+	<div class="jumbotron text-center" style="background: #207ce5;color: white;height:150px;">
+		<h1 style="font-family: 'Amatic SC', cursive;">Administrador</h1>
+	</div>
+	<nav class="navbar navbar-default" style="margin-top:-50px;">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">Intersoft</a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	      <li><a href="#">Inicio</a></li>
+	      <li><a href="#">Inventario</a></li>
+	      <li><a href="../pages/administrador.html">Administración</a></li>
+	      <li><a href="#">Cerrar Sesión</a></li>
+	    </ul>
+	  </div>
+	</nav>
+
+	<div class="container">
+		<ul class="nav nav-tabs">
+		    <li><a href="usuarios.html"><img src="https://image.flaticon.com/icons/svg/186/186333.svg" width="60px;"><br>Usuarios</a></li>
+		    <li><a href="ciudades.html"><img src="https://image.flaticon.com/icons/svg/197/197575.svg" width="60px;"><br>Ciudades</a></li>
+		    <li><a href="#Directorio"><img src="https://image.flaticon.com/icons/png/512/431/431280.png" width="60px;"><br>Directorio</a></li>
+		    <li><a href="#Empresa"><img src="https://image.flaticon.com/icons/png/512/265/265754.png" width="60px;"><br>Empresa</a></li>
+		    <li><a href="#Resolución"><img src="https://image.flaticon.com/icons/svg/377/377062.svg" width="60px;"><br>Resolución</a></li>
+		    <li><a href="#Sucursal"><img src="http://www.flaticon.com/premium-icon/icons/png/512/284/284861.png" width="60px;"><br>Sucursal</a></li>
+		    <li><a href="#Tipo_Documento"><img src="https://image.flaticon.com/icons/svg/377/377111.svg" width="60px;"><br>Tipo Documento</a></li>
+		</ul>
+	</div>
+
+	<div class="tab-content">
+    <!--   _____________________________-METODOs JS USUARIOS_______________________________ -->
+    <div id="Usuarios" class="tab-pane fade in active">
+      <center><h3><img src="https://image.flaticon.com/icons/svg/186/186333.svg" width="60px;"></h3></center>
+      <!--?php //POST function
+      if(isset($_POST['Autorization'])){
+      	if(isset($_POST['guardarusuarios'])){
+      		//crear objeto usuario
+      		$usuario->construct('',$_POST['ncedula'],$_POST['Nombre'],$_POST['Apellido'],$_POST['Cargo'],$_POST['Telefono'],$_POST['Password'],$_POST['Correo'],$_POST['Estado']);
+      		//insertar nuevo usuario
+      		$usuario->Insert();
+      	}
+      	elseif(isset($_POST['actualizarUsuarios'])){
+      		$Id_usuario = $_POST['Id_usuario'];
+      		$getUser = $usuario->GetParticular(' where Id_usuario = '.$Id_usuario.' ;')[0];
+      		$usuario->construct($getUser['Id_usuario'],$getUser['ncedula'],$getUser['Nombre'],$getUser['Apellido'],$getUser['Cargo'],$getUser['Telefono'],$getUser['Password'],$getUser['Correo'],$getUser['Estado']);
+      		//$usuario->Insert(); para copiar registro
+      		print_r($_POST);
+      	}
+      	elseif(isset($_POST['eliminarUsuarios'])){
+      		$Id_usuario = $_POST['Id_usuario'];
+      		$getUser = $usuario->GetParticular(' where Id_usuario = '.$Id_usuario.' ;')[0];
+      		$usuario->construct($getUser['Id_usuario'],$getUser['ncedula'],$getUser['Nombre'],$getUser['Apellido'],$getUser['Cargo'],$getUser['Telefono'],$getUser['Password'],$getUser['Correo'],$getUser['Estado']);
+      		//eliminar usuario
+      		$usuario->Delete();
+      		echo '<script>alert("Usuario '.$getUser['Nombre'].' eliminado");</script>';
+      	}
+      	else{
+      		echo '<script>alert("No tienes Autorización para efectuar el cambio");</script>';
+      	}
+      }
+      ?-->
+
+      <div class="panel panel-default scrollbar" id="style7" style="width: 100%;overflow-x: scroll;">
+       <div class="tab-content" style="width: 40%;float: left;padding:10px;margin: 10px;">
+			<h2>Departamentos:</h2>
+			<form action="" method="POST">
+			<input type='hidden' id='Autorization' value='92383af3b97f5e992ab9050693941816' name='Autorization'>
+			<div class="form-group">
+			  <label for="Codigo_departamento">Codigo_departamento:</label>
+			  <input type="text" class="form-control" id="Codigo_departamento" placeholder="Codigo departamento" name="Codigo_departamento">
+			</div>
+			<div class="form-group">
+			  <label for="Nombre">Nombre:</label>
+			  <input type="text" class="form-control" id="Nombredep" placeholder="Nombre" name="Nombredep">
+			</div>
+			<button type="submit" name="guardarDepartamento" class="btn btn-default">Guardar</button>
+			</form>			
+		</div>
+
+
+		<div class="tab-content" style="width: 40%;float: left;padding:10px;margin: 10px;">
+			<h2>Ciudades:</h2>
+			<form action="" method="POST">
+			<input type='hidden' id='Autorization' value='92383af3b97f5e992ab9050693941816' name='Autorization'>
+			<div class="form-group">
+			  <label for="Codigo_ciudad">Codigo_ciudad:</label>
+			  <input type="text" class="form-control" id="Codigo_ciudad" placeholder="Codigo ciudad" name="Codigo_ciudad">
+			</div>
+			<div class="form-group">
+			  <label for="Nombre">Nombre:</label>
+			  <input type="text" class="form-control" id="Nombre" placeholder="Nombre" name="Nombre">
+			</div>
+			<div class="form-group">
+			  <label for="Id_departamento">Id_departamento:</label>
+			  <?php echo Departamento::selectDepartamentos(); ?>
+			</div>
+			<button type="submit" name="guardarCiudad" class="btn btn-default">Guardar</button>
+			</form>			
+		</div>
+      </div>
+    </div>
+
+    <div class="panel panel-default scrollbar" id="style7" style="width: 100%;overflow-x: scroll;">
+      <form><label>Buscar:</label>
+      <input id="searchTerm" type="text" onkeyup="doSearch()" style="border-radius: 10px 10px 10px 10px;-moz-border-radius: 10px 10px 10px 10px;-webkit-border-radius: 10px 10px 10px 10px;border: 0px solid #000000;border-bottom: 1px solid #207ce5; width: 50%; padding: 10px;" placeholder="Buscar" />
+      </form>
+      <div class="container">         
+		  <table class="table table-hover" id="datos">
+		    <thead>
+		      <tr>
+		      	<th>#</th>
+				<th>Código Ciudad</th>
+				<th>Nombre Departamento</th>
+				<th>Nombre Ciudad</th>
+				<th></th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		    	<tr class='".$count."'>	    	
+		        <div class='tabusuarios'>
+		        <td class='TId_usuario".$count."'>7</td>
+		        <td class='Tncedula".$count."'>7</td>
+		        <td class='TNombre".$count."'>7</td>
+		        <td class='TApellido".$count."'>7</td>
+		        </div>
+		        <td><button onclick='eliminarCiudad();' name='eliminarCiudad' class='btn btn-default'>Eliminar</button></td>
+		    </tr>
+		    </tbody>
+		  </table>
+		</div>
+    </div> 
+  </div>
+  <!--   _____________________________-FIN METODOs JS USUARIOS_______________________________ -->
+
